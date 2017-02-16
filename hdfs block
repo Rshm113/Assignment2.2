@@ -1,0 +1,14 @@
+When you store a file in HDFS, the system breaks it down into a set of individual blocks and stores these blocks in various slave nodes in 
+the Hadoop cluster. This is an entirely normal thing to do, as all file systems break files down into blocks before storing them to disk.
+
+HDFS is often blissfully unaware that the final record in one block may be only a partial record, with the rest of its content shunted off 
+to the following block. HDFS only wants to make sure that files are split into evenly sized blocks that match the predefined block size 
+for the Hadoop instance (unless a custom value was entered for the file being stored). In the preceding figure, that block size is 128MB.
+
+First of all, every data block stored in HDFS has its own metadata and needs to be tracked by a central server so that applications 
+needing to access a specific file can be directed to wherever all the file’s blocks are stored. If the block size were in the kilobyte
+range, even modest volumes of data in the terabyte scale would overwhelm the metadata server with too many blocks to track.
+
+Second, HDFS is designed to enable high throughput so that the parallel processing of these large data sets happens as quickly as possible.
+The key to Hadoop’s scalability on the data processing side is, and always will be, parallelism — the ability to process the individual
+blocks of these large files in parallel.
