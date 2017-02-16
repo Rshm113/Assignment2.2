@@ -1,0 +1,7 @@
+HDFS
+1.Hadoop distributed file system(hdfs) provide storage and access to data across hadoop in order to process the data.
+2.It is a scalable fault-tolerant storage at low cost.
+3.It detects and compensates for harware issue including disk problem and server failure.
+4.store file across the collection of cluster.
+5.In hdfs files are divided in the blocks of default value 128 mb.
+6.Also provide replication having default value of 3 in each machine.
